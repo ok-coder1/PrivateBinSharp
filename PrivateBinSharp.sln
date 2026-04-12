@@ -5,8 +5,6 @@ VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateBinSharp", "PrivateBinSharp\PrivateBinSharp.csproj", "{45153CEC-DFAE-4623-809A-8D4BD2D811A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPrivateBinMarkdown", "TestPrivateBinMarkdown\TestPrivateBinMarkdown.csproj", "{47579373-3E2E-44DA-9C95-3EADB83448FD}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
