@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	<JsonSerializerIsReflectionEnabledByDefault>false</JsonSerializerIsReflectionEnabledByDefault>
 	  <DocumentationFile>PrivateBinSharp.xml</DocumentationFile>
     <Version>1.0.2</Version>
     <Authors>xXBuilderBXx</Authors>
@@ -15,17 +16,5 @@
     <RepositoryUrl>https://github.com/xXBuilderBXx/PrivateBinSharp</RepositoryUrl>
     <PackageTags>privatebin</PackageTags>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EditorConfigFiles Remove="C:\Users\Brandan\Source\Repos\xXBuilderBXx\PrivateBinSharp\PrivateBinSharp\.editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="C:\Users\Brandan\Source\Repos\xXBuilderBXx\PrivateBinSharp\PrivateBinSharp\.editorconfig" />
-  </ItemGroup>
 
 </Project>
