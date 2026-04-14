@@ -5,6 +5,7 @@ using PrivateBinSharp.Crypto.crypto.modes;
 using PrivateBinSharp.Crypto.crypto.parameters;
 using PrivateBinSharp.Crypto.security;
 using System.Reflection;
+using System.Text.Json;
 using System.Text;
 
 namespace PrivateBinSharp;
@@ -100,7 +101,8 @@ public class PrivateBinClient
 			throw new Exception("Failed to generate encrypted data, " + ex.Message);
 		}
 
-        string body = Newtonsoft.Json.JsonConvert.SerializeObject(Json.Item1);
+        // string body = Newtonsoft.Json.JsonConvert.SerializeObject(Json.Item1);
+		string body = JsonSerializer.Serialize(Json.Item1);
 		HttpRequestMessage Req = new HttpRequestMessage(HttpMethod.Post, HostURL)
 		{
 			Content = new StringContent(body, Encoding.UTF8)
@@ -125,7 +127,8 @@ public class PrivateBinClient
 		{
 
 			string response = await Res.Content.ReadAsStringAsync();
-			ResponseJson = Newtonsoft.Json.JsonConvert.DeserializeObject<PasteResponse>(response);
+			// ResponseJson = Newtonsoft.Json.JsonConvert.DeserializeObject<PasteResponse>(response);
+			ResponseJson = JsonSerializer.Deserialize<PasteResponse>(response);
 			if (ResponseJson == null)
 				return new Paste
 				{
@@ -161,7 +164,11 @@ public class PrivateBinClient
 	{
 		SecureRandom rng = new();
 
-		string pasteDataJson = Newtonsoft.Json.JsonConvert.SerializeObject(new PasteBlobJson
+		/* string pasteDataJson = Newtonsoft.Json.JsonConvert.SerializeObject(new PasteBlobJson
+		{
+			paste = text
+		}); */
+		string pasteDataJson = JsonSerializer.Serialize(new PasteBlobJson
 		{
 			paste = text
 		});
@@ -210,7 +217,8 @@ public class PrivateBinClient
 			_openDiscussion,
 			_burnAfterReading
 		};
-		string pasteMetaJson = Newtonsoft.Json.JsonConvert.SerializeObject(pasteMetaObj);
+		// string pasteMetaJson = Newtonsoft.Json.JsonConvert.SerializeObject(pasteMetaObj);
+		string pasteMetaJson = JsonSerializer.Serialize(pasteMetaObj);
 		byte[] pasteMeta = Encoding.UTF8.GetBytes(pasteMetaJson);
 
 		GcmBlockCipher cipher = new(new AesEngine());
